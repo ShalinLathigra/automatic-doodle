@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=47 format=2]
+[gd_resource type="Resource" load_steps=56 format=2]
 
 [ext_resource path="res://Scripts/AIColours.gd" type="Script" id=1]
 [ext_resource path="res://Art/Death/skeleton.png" type="Texture" id=2]
@@ -36,7 +36,7 @@
 [ext_resource path="res://Art/Player/robber.png" type="Texture" id=34]
 [ext_resource path="res://Art/Player/hooded-figure.png" type="Texture" id=35]
 [ext_resource path="res://Art/Player/run.png" type="Texture" id=36]
-[ext_resource path="res://Art/Player/target-dummy.png" type="Texture" id=37]
+[ext_resource path="res://Art/Object/locked-box.png" type="Texture" id=37]
 [ext_resource path="res://Art/Tentacle/coiling-curl.png" type="Texture" id=38]
 [ext_resource path="res://Art/Tentacle/vine-whip.png" type="Texture" id=39]
 [ext_resource path="res://Art/Tentacle/thorny-vine.png" type="Texture" id=40]
@@ -46,16 +46,25 @@
 [ext_resource path="res://Art/Tentacle/eyestalk.png" type="Texture" id=44]
 [ext_resource path="res://Art/Tentacle/daemon-pull.png" type="Texture" id=45]
 [ext_resource path="res://Art/Tentacle/leeching-worm.png" type="Texture" id=46]
+[ext_resource path="res://Art/Object/barrel.png" type="Texture" id=47]
+[ext_resource path="res://Art/Object/wooden-crate.png" type="Texture" id=48]
+[ext_resource path="res://Art/Object/canned-fish.png" type="Texture" id=49]
+[ext_resource path="res://Art/Object/cardboard-box-closed.png" type="Texture" id=50]
+[ext_resource path="res://Art/Object/companion-cube.png" type="Texture" id=51]
+[ext_resource path="res://Art/Object/chest.png" type="Texture" id=52]
+[ext_resource path="res://Art/Object/broken-pottery.png" type="Texture" id=53]
+[ext_resource path="res://Art/Object/jigsaw-box.png" type="Texture" id=54]
+[ext_resource path="res://Art/Object/Colours.tres" type="Resource" id=55]
 
 [resource]
 script = ExtResource( 1 )
 sleep = Color( 0.764706, 0.72549, 0.0980392, 1 )
 flee = Color( 0.156863, 0.517647, 0.776471, 1 )
 attack = Color( 0.737255, 0.164706, 0.164706, 1 )
-default = Color( 1, 1, 1, 1 )
+default = Color( 0.0627451, 0.741176, 0.756863, 1 )
 death_images = [ ExtResource( 7 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 8 ), ExtResource( 6 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 7 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 8 ), ExtResource( 6 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 12 ), ExtResource( 13 ) ]
 enemy_images = [ ExtResource( 21 ), ExtResource( 20 ), ExtResource( 16 ), ExtResource( 14 ), ExtResource( 18 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 19 ), ExtResource( 15 ), ExtResource( 17 ) ]
 passive_images = [ ExtResource( 25 ), ExtResource( 24 ), ExtResource( 26 ) ]
-object_images = [  ]
-player_images = [ ExtResource( 35 ), ExtResource( 34 ), ExtResource( 36 ), ExtResource( 33 ), ExtResource( 37 ), ExtResource( 27 ) ]
+object_images = [ ExtResource( 47 ), ExtResource( 53 ), ExtResource( 49 ), ExtResource( 50 ), ExtResource( 52 ), ExtResource( 55 ), ExtResource( 51 ), ExtResource( 54 ), ExtResource( 37 ), ExtResource( 48 ) ]
+player_images = [ ExtResource( 35 ), ExtResource( 34 ), ExtResource( 36 ), ExtResource( 33 ), null, ExtResource( 27 ) ]
 tentacle_images = [ ExtResource( 38 ), ExtResource( 42 ), ExtResource( 45 ), ExtResource( 43 ), ExtResource( 44 ), ExtResource( 46 ), ExtResource( 29 ), ExtResource( 30 ), ExtResource( 28 ), ExtResource( 31 ), ExtResource( 32 ), ExtResource( 41 ), ExtResource( 40 ), ExtResource( 39 ) ]

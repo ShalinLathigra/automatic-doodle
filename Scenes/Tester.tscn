@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=62 format=2]
 
 [ext_resource path="res://Scripts/Tester.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Encounter.gd" type="Script" id=2]
@@ -6,9 +6,9 @@
 [ext_resource path="res://Scripts/MouseIndicator.gd" type="Script" id=4]
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=5]
 [ext_resource path="res://Themes/TextTheme.tres" type="Theme" id=6]
-[ext_resource path="res://Scripts/Enemy.gd" type="Script" id=7]
+[ext_resource path="res://Sounds/394419__inspectorj__bamboo-swing-a13.wav" type="AudioStream" id=7]
 [ext_resource path="res://Art/Player/walk.png" type="Texture" id=8]
-[ext_resource path="res://Art/Enemy/evil-minion.png" type="Texture" id=9]
+[ext_resource path="res://Sounds/252265__reitanna__thunk.wav" type="AudioStream" id=9]
 [ext_resource path="res://Art/Object/Colours.tres" type="Resource" id=10]
 [ext_resource path="res://Art/Map/doorway.png" type="Texture" id=11]
 [ext_resource path="res://Art/Map/wooden-door.png" type="Texture" id=12]
@@ -16,17 +16,13 @@
 [ext_resource path="res://Art/Tentacle/suckered-tentacle.png" type="Texture" id=14]
 [ext_resource path="res://Art/64pxShader.tres" type="Material" id=15]
 [ext_resource path="res://Art/Map/broken-wall.png" type="Texture" id=16]
-
-[sub_resource type="Shader" id=1]
-code = "shader_type canvas_item;
-
-void fragment(){
-	vec4 c = texture(TEXTURE, UV);
-	COLOR = c.r * c.bbbb;
-}"
-
-[sub_resource type="ShaderMaterial" id=2]
-shader = SubResource( 1 )
+[ext_resource path="res://Scripts/TileMap.gd" type="Script" id=17]
+[ext_resource path="res://Sounds/cloth3.ogg" type="AudioStream" id=18]
+[ext_resource path="res://Characters/Door.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Scenes/AutoLabel.gd" type="Script" id=20]
+[ext_resource path="res://Characters/Enemy.tscn" type="PackedScene" id=21]
+[ext_resource path="res://Characters/Barrel.tscn" type="PackedScene" id=22]
+[ext_resource path="res://Sounds/Death1.wav" type="AudioStream" id=23]
 
 [sub_resource type="TileSet" id=3]
 0/name = "doorway.png 0"
@@ -90,9 +86,192 @@ shader = SubResource( 1 )
 3/shapes = [  ]
 3/z_index = 0
 
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+void fragment(){
+	vec4 c = texture(TEXTURE, UV);
+	COLOR = c.r * c.bbbb;
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+
+[sub_resource type="Shader" id=4]
+code = "shader_type canvas_item;
+
+void fragment(){
+	float modifier = 8.0;
+	vec4 colours = texture(TEXTURE, UV * modifier).r * MODULATE;
+	COLOR = vec4(colours.r, colours.g, colours.b, 1.0);
+}"
+
+[sub_resource type="ShaderMaterial" id=5]
+resource_local_to_scene = true
+shader = SubResource( 4 )
+
+[sub_resource type="ShaderMaterial" id=6]
+resource_local_to_scene = true
+shader = SubResource( 4 )
+
+[sub_resource type="ShaderMaterial" id=7]
+resource_local_to_scene = true
+shader = SubResource( 4 )
+
+[sub_resource type="ShaderMaterial" id=8]
+resource_local_to_scene = true
+shader = SubResource( 4 )
+
+[sub_resource type="ShaderMaterial" id=9]
+resource_local_to_scene = true
+shader = SubResource( 4 )
+
+[sub_resource type="ShaderMaterial" id=10]
+resource_local_to_scene = true
+shader = SubResource( 4 )
+
+[sub_resource type="ShaderMaterial" id=11]
+resource_local_to_scene = true
+shader = SubResource( 4 )
+
+[sub_resource type="ShaderMaterial" id=12]
+resource_local_to_scene = true
+shader = SubResource( 4 )
+
+[sub_resource type="ShaderMaterial" id=13]
+resource_local_to_scene = true
+shader = SubResource( 4 )
+
+[sub_resource type="ShaderMaterial" id=14]
+resource_local_to_scene = true
+shader = SubResource( 4 )
+
+[sub_resource type="ShaderMaterial" id=15]
+resource_local_to_scene = true
+shader = SubResource( 4 )
+
+[sub_resource type="ShaderMaterial" id=16]
+resource_local_to_scene = true
+shader = SubResource( 4 )
+
+[sub_resource type="ShaderMaterial" id=17]
+resource_local_to_scene = true
+shader = SubResource( 4 )
+
+[sub_resource type="ShaderMaterial" id=18]
+resource_local_to_scene = true
+shader = SubResource( 4 )
+
+[sub_resource type="ShaderMaterial" id=19]
+resource_local_to_scene = true
+shader = SubResource( 4 )
+
+[sub_resource type="ShaderMaterial" id=20]
+resource_local_to_scene = true
+shader = SubResource( 4 )
+
+[sub_resource type="ShaderMaterial" id=21]
+resource_local_to_scene = true
+shader = SubResource( 4 )
+
+[sub_resource type="ShaderMaterial" id=22]
+resource_local_to_scene = true
+shader = SubResource( 4 )
+
+[sub_resource type="ShaderMaterial" id=23]
+resource_local_to_scene = true
+shader = SubResource( 4 )
+
+[sub_resource type="ShaderMaterial" id=24]
+resource_local_to_scene = true
+shader = SubResource( 4 )
+
+[sub_resource type="ShaderMaterial" id=25]
+resource_local_to_scene = true
+shader = SubResource( 4 )
+
+[sub_resource type="ShaderMaterial" id=26]
+resource_local_to_scene = true
+shader = SubResource( 4 )
+
+[sub_resource type="ShaderMaterial" id=27]
+resource_local_to_scene = true
+shader = SubResource( 4 )
+
+[sub_resource type="ShaderMaterial" id=28]
+resource_local_to_scene = true
+shader = SubResource( 4 )
+
+[sub_resource type="ShaderMaterial" id=29]
+resource_local_to_scene = true
+shader = SubResource( 4 )
+
+[sub_resource type="ShaderMaterial" id=30]
+resource_local_to_scene = true
+shader = SubResource( 4 )
+
+[sub_resource type="ShaderMaterial" id=31]
+resource_local_to_scene = true
+shader = SubResource( 4 )
+
+[sub_resource type="ShaderMaterial" id=32]
+resource_local_to_scene = true
+shader = SubResource( 4 )
+
+[sub_resource type="ShaderMaterial" id=33]
+resource_local_to_scene = true
+shader = SubResource( 4 )
+
+[sub_resource type="ShaderMaterial" id=34]
+resource_local_to_scene = true
+shader = SubResource( 4 )
+
+[sub_resource type="Shader" id=37]
+code = "shader_type canvas_item;
+
+uniform float circle_rad : hint_range(0.0, 32.0, 0.5);
+void fragment(){
+	float amount = circle_rad / 64.0;
+	float gradient = 1.0 - step(amount, length(UV - vec2(0.5)));
+	vec4 color = gradient * MODULATE;
+	COLOR = vec4(color.r, color.g, color.b, color.r);
+}"
+
+[sub_resource type="ShaderMaterial" id=38]
+shader = SubResource( 37 )
+shader_param/circle_rad = 21.5
+
+[sub_resource type="Gradient" id=35]
+
+[sub_resource type="GradientTexture2D" id=36]
+gradient = SubResource( 35 )
+fill_from = Vector2( 0.708333, 0.3 )
+
 [node name="Tester" type="Node2D"]
 script = ExtResource( 1 )
-_encounter_path = NodePath("Encounter")
+_entry_path = NodePath("Encounter_1")
+
+[node name="TileMap" type="TileMap" parent="."]
+modulate = Color( 0.172549, 0.172549, 0.247059, 1 )
+show_behind_parent = true
+tile_set = SubResource( 3 )
+format = 1
+tile_data = PoolIntArray( 0, 2, 0, 1, 3, 0, 2, 2, 0, 3, 3, 0, 4, 2, 0, 5, 2, 0, 6, 2, 0, 7, 3, 0, 8, 2, 0, 9, 2, 0, 10, 2, 0, 11, 536870914, 0, 12, 536870914, 0, 13, 536870914, 0, 14, 536870914, 0, 15, 536870914, 0, 16, 536870914, 0, 17, 536870914, 0, 18, 536870914, 0, 19, 536870915, 0, 20, 536870915, 0, 21, 536870914, 0, 22, 536870914, 0, 65536, 2, 0, 65540, 2, 0, 65547, 3, 0, 65558, 536870914, 0, 131072, 2, 0, 131076, 2, 0, 131083, 2, 0, 131088, 536870914, 0, 131094, 536870914, 0, 196608, 3, 0, 196612, 2, 0, 196624, 536870914, 0, 196630, 536870914, 0, 262144, 2, 0, 262145, 536870915, 0, 262147, 536870915, 0, 262148, 2, 0, 262155, 2, 0, 262160, 536870915, 0, 262166, 536870914, 0, 327680, 2, 0, 327691, 2, 0, 327696, 536870915, 0, 327702, 536870915, 0, 393216, 536870914, 0, 393217, 2, 0, 393218, 2, 0, 393219, 3, 0, 393220, 3, 0, 393221, 3, 0, 393222, 536870914, 0, 393223, 536870914, 0, 393224, 536870914, 0, 393225, 536870914, 0, 393226, 536870914, 0, 393227, 536870914, 0, 393228, 536870914, 0, 393229, 536870914, 0, 393230, 536870914, 0, 393231, 536870914, 0, 393232, 536870915, 0, 393233, 536870914, 0, 393234, 536870914, 0, 393235, 536870915, 0, 393237, 536870915, 0, 393238, 536870915, 0, 458752, 536870914, 0, 458753, 536870914, 0, 458754, 536870914, 0, 458755, 536870914, 0, 458756, 536870914, 0, 458757, 536870914, 0, 458758, 536870914, 0, 458759, 536870914, 0, 458760, 536870914, 0, 458761, 536870914, 0, 458762, 536870914, 0, 458763, 536870914, 0, 458764, 536870914, 0, 458774, 536870914, 0, 524288, 536870914, 0, 524289, 536870914, 0, 524290, 536870914, 0, 524291, 536870914, 0, 524292, 536870914, 0, 524293, 536870914, 0, 524294, 536870914, 0, 524300, 536870915, 0, 524303, 536870914, 0, 524305, 536870914, 0, 524306, 536870915, 0, 524307, 536870915, 0, 524309, 536870914, 0, 524310, 536870914, 0, 589824, 536870914, 0, 589825, 536870914, 0, 589826, 536870914, 0, 589827, 536870914, 0, 589828, 536870914, 0, 589836, 536870915, 0, 589839, 536870915, 0, 589841, 536870914, 0, 589843, 536870914, 0, 589845, 536870915, 0, 589846, 536870914, 0, 655360, 536870914, 0, 655361, 536870914, 0, 655362, 536870914, 0, 655363, 536870914, 0, 655364, 536870914, 0, 655372, 536870915, 0, 655375, 536870915, 0, 655376, 536870914, 0, 655377, 536870914, 0, 655379, 536870914, 0, 655381, 536870915, 0, 655382, 536870914, 0, 720896, 536870914, 0, 720897, 536870914, 0, 720898, 536870914, 0, 720899, 536870914, 0, 720900, 536870914, 0, 720901, 536870914, 0, 720902, 536870914, 0, 720908, 536870914, 0, 720918, 536870914, 0, 786432, 536870914, 0, 786433, 536870914, 0, 786434, 536870914, 0, 786435, 536870914, 0, 786436, 536870914, 0, 786437, 536870914, 0, 786438, 536870914, 0, 786439, 536870914, 0, 786440, 536870914, 0, 786441, 536870914, 0, 786442, 536870914, 0, 786444, 536870914, 0, 786445, 536870914, 0, 786446, 536870914, 0, 786448, 536870914, 0, 786449, 536870914, 0, 786450, 536870915, 0, 786451, 536870915, 0, 786452, 536870914, 0, 786453, 536870914, 0, 786454, 536870914, 0, 851968, 536870914, 0, 851980, 536870915, 0, 851990, 536870914, 0, 917504, 536870915, 0, 917506, 536870915, 0, 917508, 536870914, 0, 917509, 536870914, 0, 917511, 536870914, 0, 917513, 536870914, 0, 917514, 536870914, 0, 917515, 536870914, 0, 917516, 536870915, 0, 917524, 536870914, 0, 917525, 536870914, 0, 917526, 536870914, 0, 983040, 536870915, 0, 983042, 536870915, 0, 983045, 536870914, 0, 983047, 536870914, 0, 983049, 536870915, 0, 983052, 536870915, 0, 983062, 536870914, 0, 1048576, 536870915, 0, 1048578, 536870914, 0, 1048579, 536870914, 0, 1048581, 536870914, 0, 1048583, 536870914, 0, 1048584, 536870914, 0, 1048585, 536870914, 0, 1048588, 536870914, 0, 1048592, 536870914, 0, 1048595, 536870915, 0, 1048596, 536870914, 0, 1048597, 536870914, 0, 1048598, 536870914, 0, 1114112, 536870914, 0, 1114127, 536870915, 0, 1114128, 536870915, 0, 1114131, 536870915, 0, 1114132, 536870915, 0, 1114133, 536870914, 0, 1114134, 536870914, 0, 1179648, 536870914, 0, 1179649, 536870914, 0, 1179650, 536870914, 0, 1179651, 536870914, 0, 1179652, 536870915, 0, 1179653, 536870914, 0, 1179654, 536870914, 0, 1179655, 536870914, 0, 1179656, 536870914, 0, 1179657, 536870914, 0, 1179658, 536870914, 0, 1179659, 536870914, 0, 1179660, 536870914, 0, 1179661, 536870914, 0, 1179662, 536870914, 0, 1179663, 536870914, 0, 1179664, 536870914, 0, 1179665, 536870914, 0, 1179666, 536870914, 0, 1179667, 536870914, 0, 1179668, 536870915, 0, 1179669, 536870914, 0, 1179670, 536870914, 0 )
+script = ExtResource( 17 )
+
+[node name="TileMap" type="TileMap" parent="TileMap"]
+modulate = Color( 0.670588, 0.670588, 0.772549, 1 )
+tile_set = SubResource( 3 )
+format = 1
+tile_data = PoolIntArray( 0, 2, 0, 13, 536870914, 0, 14, 536870914, 0, 15, 536870914, 0, 16, 536870914, 0, 65536, 2, 0, 65540, 2, 0, 65547, 3, 0, 131072, 2, 0, 131083, 2, 0, 131088, 536870914, 0, 131094, 536870914, 0, 196612, 2, 0, 196624, 536870914, 0, 262144, 2, 0, 262155, 2, 0, 262160, 536870915, 0, 262166, 536870914, 0, 327691, 2, 0, 327702, 536870915, 0, 393232, 536870915, 0, 393233, 536870914, 0, 393234, 536870914, 0, 393235, 536870915, 0, 524292, 536870914, 0, 524293, 536870914, 0, 524303, 536870914, 0, 524305, 536870914, 0, 524306, 536870915, 0, 524307, 536870915, 0, 524309, 536870914, 0, 524310, 536870914, 0, 589839, 536870915, 0, 589841, 536870914, 0, 589843, 536870914, 0, 589845, 536870915, 0, 589846, 536870914, 0, 655372, 536870915, 0, 720896, 536870914, 0, 720897, 536870914, 0, 720898, 536870914, 0, 720899, 536870914, 0, 720902, 536870914, 0, 720908, 536870914, 0, 720918, 536870914, 0, 786432, 536870914, 0, 786433, 536870914, 0, 786434, 536870914, 0, 786435, 536870914, 0, 786436, 536870914, 0, 786437, 536870914, 0, 786440, 536870914, 0, 786441, 536870914, 0, 786442, 536870914, 0, 786445, 536870914, 0, 786446, 536870914, 0, 786448, 536870914, 0, 786449, 536870914, 0, 786450, 536870915, 0, 786454, 536870914, 0, 851968, 536870914, 0, 851980, 536870915, 0, 917504, 536870915, 0, 917506, 536870915, 0, 917508, 536870914, 0, 917509, 536870914, 0, 917511, 536870914, 0, 917513, 536870914, 0, 917516, 536870915, 0, 983049, 536870915, 0, 1048576, 536870915, 0, 1048578, 536870914, 0, 1048579, 536870914, 0, 1048581, 536870914, 0, 1048583, 536870914, 0, 1114112, 536870914, 0, 1179654, 536870914, 0, 1179655, 536870914, 0, 1179656, 536870914, 0, 1179662, 536870914, 0, 1179663, 536870914, 0, 1179664, 536870914, 0, 1179667, 536870914, 0, 1179668, 536870915, 0, 1179669, 536870914, 0 )
+script = ExtResource( 17 )
+
+[node name="TileMap2" type="TileMap" parent="TileMap"]
+modulate = Color( 0.662745, 0.807843, 0.901961, 1 )
+tile_set = SubResource( 3 )
+format = 1
+tile_data = PoolIntArray( 0, 2, 0, 1, 3, 0, 12, 536870914, 0, 14, 536870914, 0, 15, 536870914, 0, 16, 536870914, 0, 17, 536870914, 0, 18, 536870914, 0, 19, 536870915, 0, 20, 536870915, 0, 21, 536870914, 0, 22, 536870914, 0, 65536, 2, 0, 65558, 536870914, 0, 131072, 2, 0, 131076, 2, 0, 131083, 2, 0, 131094, 536870914, 0, 196612, 2, 0, 262166, 536870914, 0, 327696, 536870915, 0, 327702, 536870915, 0, 393220, 3, 0, 393221, 3, 0, 393222, 536870914, 0, 393223, 536870914, 0, 393225, 536870914, 0, 393226, 536870914, 0, 393227, 536870914, 0, 458753, 536870914, 0, 458758, 536870914, 0, 458764, 536870914, 0, 458774, 536870914, 0, 524289, 536870914, 0, 524290, 536870914, 0, 524291, 536870914, 0, 524292, 536870914, 0, 524293, 536870914, 0, 524300, 536870915, 0, 524303, 536870914, 0, 524306, 536870915, 0, 524307, 536870915, 0, 524309, 536870914, 0, 524310, 536870914, 0, 589824, 536870914, 0, 589825, 536870914, 0, 589826, 536870914, 0, 589827, 536870914, 0, 589839, 536870915, 0, 589841, 536870914, 0, 589845, 536870915, 0, 589846, 536870914, 0, 655360, 536870914, 0, 655364, 536870914, 0, 655376, 536870914, 0, 655377, 536870914, 0, 655379, 536870914, 0, 655381, 536870915, 0, 655382, 536870914, 0, 720908, 536870914, 0, 720918, 536870914, 0, 786436, 536870914, 0, 786437, 536870914, 0, 786439, 536870914, 0, 786440, 536870914, 0, 786441, 536870914, 0, 786442, 536870914, 0, 786445, 536870914, 0, 786453, 536870914, 0, 851990, 536870914, 0, 917504, 536870915, 0, 917508, 536870914, 0, 917511, 536870914, 0, 917513, 536870914, 0, 917514, 536870914, 0, 917515, 536870914, 0, 917526, 536870914, 0, 983052, 536870915, 0, 1048576, 536870915, 0, 1048578, 536870914, 0, 1048579, 536870914, 0, 1048583, 536870914, 0, 1048584, 536870914, 0, 1048585, 536870914, 0, 1048595, 536870915, 0, 1048598, 536870914, 0, 1114127, 536870915, 0, 1114128, 536870915, 0, 1114134, 536870914, 0, 1179649, 536870914, 0, 1179650, 536870914, 0, 1179652, 536870915, 0, 1179654, 536870914, 0, 1179655, 536870914, 0, 1179657, 536870914, 0, 1179666, 536870914, 0, 1179667, 536870914, 0, 1179668, 536870915, 0, 1179669, 536870914, 0, 1179670, 536870914, 0 )
+script = ExtResource( 17 )
 
 [node name="MouseIcon" type="Sprite" parent="."]
 material = SubResource( 2 )
@@ -114,28 +293,290 @@ text = "(0,1)"
 align = 1
 valign = 3
 
-[node name="Encounter" type="Node2D" parent="."]
+[node name="Encounter_1" type="Node2D" parent="." groups=["Encounter"]]
 script = ExtResource( 2 )
-_map_path = NodePath("TileMap")
+_map_path = NodePath("../TileMap")
 
-[node name="TileMap" type="TileMap" parent="Encounter"]
-modulate = Color( 0.172549, 0.172549, 0.247059, 1 )
-tile_set = SubResource( 3 )
-cell_tile_origin = 1
-format = 1
-tile_data = PoolIntArray( 0, 2, 0, 1, 3, 0, 2, 2, 0, 3, 3, 0, 4, 2, 0, 5, 2, 0, 6, 2, 0, 7, 3, 0, 8, 2, 0, 9, 2, 0, 10, 2, 0, 11, 2, 0, 65536, 2, 0, 65540, 2, 0, 65547, 3, 0, 131072, 2, 0, 131076, 2, 0, 131083, 2, 0, 196608, 3, 0, 196612, 2, 0, 262144, 2, 0, 262148, 2, 0, 262155, 2, 0, 327680, 2, 0, 327691, 2, 0, 393216, 2, 0, 393217, 2, 0, 393218, 2, 0, 393219, 3, 0, 393220, 3, 0, 393221, 3, 0, 393222, 2, 0, 393223, 2, 0, 393224, 2, 0, 393225, 2, 0, 393226, 2, 0, 393227, 2, 0 )
+[node name="LastScene" type="Node2D" parent="Encounter_1"]
+position = Vector2( 320, -160 )
 
-[node name="Player" type="Sprite" parent="Encounter" groups=["Entity", "Player"]]
+[node name="Enemy" parent="Encounter_1" instance=ExtResource( 21 )]
+material = SubResource( 5 )
+
+[node name="CameraAnchor" type="Node2D" parent="Encounter_1"]
+position = Vector2( 384, 224 )
+
+[node name="NextScene" type="Node2D" parent="Encounter_1"]
+position = Vector2( 736, 224 )
+
+[node name="Door" parent="Encounter_1" instance=ExtResource( 19 )]
+show_behind_parent = true
+material = SubResource( 6 )
+position = Vector2( 160, 288 )
+
+[node name="Door1" parent="Encounter_1" instance=ExtResource( 19 )]
+show_behind_parent = true
+material = SubResource( 7 )
+position = Vector2( 736, 224 )
+
+[node name="W" type="Label" parent="Encounter_1"]
+modulate = Color( 1, 1, 1, 0.552941 )
+margin_left = 160.0
+margin_top = 64.0
+margin_right = 196.0
+margin_bottom = 88.0
+theme = ExtResource( 6 )
+text = "W"
+
+[node name="W" type="Label" parent="Encounter_1/W"]
+modulate = Color( 0.4, 0.105882, 0.454902, 1 )
+margin_left = 16.0
+margin_right = 52.0
+margin_bottom = 24.0
+theme = ExtResource( 6 )
+text = "^"
+
+[node name="A" type="Label" parent="Encounter_1"]
+modulate = Color( 1, 1, 1, 0.552941 )
+margin_left = 113.0
+margin_top = 96.0
+margin_right = 149.0
+margin_bottom = 120.0
+theme = ExtResource( 6 )
+text = "A"
+
+[node name="W" type="Label" parent="Encounter_1/A"]
+modulate = Color( 0.4, 0.105882, 0.454902, 1 )
+margin_left = 17.0
+margin_right = 53.0
+margin_bottom = 24.0
+theme = ExtResource( 6 )
+text = "<"
+
+[node name="S" type="Label" parent="Encounter_1"]
+modulate = Color( 1, 1, 1, 0.552941 )
+margin_left = 162.0
+margin_top = 123.0
+margin_right = 198.0
+margin_bottom = 174.0
+theme = ExtResource( 6 )
+text = "S
+"
+
+[node name="W" type="Label" parent="Encounter_1/S"]
+modulate = Color( 0.4, 0.105882, 0.454902, 1 )
+margin_left = 13.0
+margin_right = 49.0
+margin_bottom = 24.0
+theme = ExtResource( 6 )
+text = "v"
+
+[node name="D" type="Label" parent="Encounter_1"]
+modulate = Color( 1, 1, 1, 0.552941 )
+margin_left = 204.0
+margin_top = 98.0
+margin_right = 240.0
+margin_bottom = 149.0
+theme = ExtResource( 6 )
+text = "D
+"
+
+[node name="W" type="Label" parent="Encounter_1/D"]
+modulate = Color( 0.4, 0.105882, 0.454902, 1 )
+margin_left = 13.0
+margin_top = 1.0
+margin_right = 49.0
+margin_bottom = 25.0
+theme = ExtResource( 6 )
+text = ">"
+
+[node name="Encounter_2" type="Node2D" parent="." groups=["Encounter"]]
+position = Vector2( 704, 0 )
+script = ExtResource( 2 )
+_map_path = NodePath("../TileMap")
+
+[node name="CameraAnchor" type="Node2D" parent="Encounter_2"]
+position = Vector2( 384, 224 )
+
+[node name="NextScene" type="Node2D" parent="Encounter_2"]
+position = Vector2( 608, 416 )
+
+[node name="LastScene" type="Node2D" parent="Encounter_2"]
+position = Vector2( -32, 224 )
+
+[node name="Enemy4" parent="Encounter_2" instance=ExtResource( 21 )]
+material = SubResource( 8 )
+position = Vector2( 224, 160 )
+
+[node name="Enemy5" parent="Encounter_2" instance=ExtResource( 21 )]
+material = SubResource( 9 )
+position = Vector2( 480, 160 )
+
+[node name="Enemy6" parent="Encounter_2" instance=ExtResource( 21 )]
+material = SubResource( 10 )
+position = Vector2( 416, 352 )
+
+[node name="Door2" parent="Encounter_2" instance=ExtResource( 19 )]
+show_behind_parent = true
+material = SubResource( 11 )
+position = Vector2( 608, 416 )
+
+[node name="Encounter_3" type="Node2D" parent="." groups=["Encounter"]]
+position = Vector2( 704, 448 )
+script = ExtResource( 2 )
+_map_path = NodePath("../TileMap")
+
+[node name="CameraAnchor" type="Node2D" parent="Encounter_3"]
+position = Vector2( 384, 160 )
+
+[node name="NextScene" type="Node2D" parent="Encounter_3"]
+position = Vector2( 288, 352 )
+
+[node name="LastScene" type="Node2D" parent="Encounter_3"]
+position = Vector2( 608, -96 )
+
+[node name="Barrel" parent="Encounter_3" instance=ExtResource( 22 )]
+material = SubResource( 12 )
+
+[node name="Enemy5" parent="Encounter_3" instance=ExtResource( 21 )]
+material = SubResource( 13 )
+position = Vector2( 352, 160 )
+
+[node name="Enemy6" parent="Encounter_3" instance=ExtResource( 21 )]
+material = SubResource( 14 )
+
+[node name="Enemy7" parent="Encounter_3" instance=ExtResource( 21 )]
+material = SubResource( 15 )
+position = Vector2( 224, 288 )
+
+[node name="Barrel3" parent="Encounter_3" instance=ExtResource( 22 )]
+material = SubResource( 16 )
+position = Vector2( 224, 96 )
+
+[node name="Door3" parent="Encounter_3" instance=ExtResource( 19 )]
+show_behind_parent = true
+material = SubResource( 17 )
+position = Vector2( 288, 352 )
+
+[node name="Encounter_4" type="Node2D" parent="." groups=["Encounter"]]
+position = Vector2( 704, 832 )
+script = ExtResource( 2 )
+_map_path = NodePath("../TileMap")
+
+[node name="CameraAnchor" type="Node2D" parent="Encounter_4"]
+position = Vector2( 384, 160 )
+
+[node name="NextScene" type="Node2D" parent="Encounter_4"]
+position = Vector2( 96, 288 )
+
+[node name="LastScene" type="Node2D" parent="Encounter_4"]
+position = Vector2( 288, -96 )
+
+[node name="Enemy7" parent="Encounter_4" instance=ExtResource( 21 )]
+material = SubResource( 18 )
+position = Vector2( 288, 96 )
+
+[node name="Barrel5" parent="Encounter_4" instance=ExtResource( 22 )]
+material = SubResource( 19 )
+position = Vector2( 160, 96 )
+
+[node name="Enemy8" parent="Encounter_4" instance=ExtResource( 21 )]
+material = SubResource( 20 )
+position = Vector2( 160, 288 )
+
+[node name="Enemy9" parent="Encounter_4" instance=ExtResource( 21 )]
+material = SubResource( 21 )
+position = Vector2( 608, 160 )
+
+[node name="Enemy10" parent="Encounter_4" instance=ExtResource( 21 )]
+material = SubResource( 22 )
+position = Vector2( 672, 32 )
+
+[node name="Barrel6" parent="Encounter_4" instance=ExtResource( 22 )]
+material = SubResource( 23 )
+position = Vector2( 288, 224 )
+
+[node name="Barrel7" parent="Encounter_4" instance=ExtResource( 22 )]
+material = SubResource( 24 )
+position = Vector2( 352, 32 )
+
+[node name="Barrel8" parent="Encounter_4" instance=ExtResource( 22 )]
+material = SubResource( 25 )
+position = Vector2( 480, 224 )
+
+[node name="Door4" parent="Encounter_4" instance=ExtResource( 19 )]
+show_behind_parent = true
+material = SubResource( 26 )
+position = Vector2( 96, 288 )
+
+[node name="Encounter_5" type="Node2D" parent="." groups=["Encounter"]]
+position = Vector2( 0, 832 )
+script = ExtResource( 2 )
+_map_path = NodePath("../TileMap")
+
+[node name="CameraAnchor" type="Node2D" parent="Encounter_5"]
+position = Vector2( 384, 160 )
+
+[node name="NextScene" type="Node2D" parent="Encounter_5"]
+position = Vector2( 736, -32 )
+
+[node name="LastScene" type="Node2D" parent="Encounter_5"]
+position = Vector2( 864, 288 )
+
+[node name="Enemy7" parent="Encounter_5" instance=ExtResource( 21 )]
+material = SubResource( 27 )
+position = Vector2( 288, 160 )
+
+[node name="Barrel7" parent="Encounter_5" instance=ExtResource( 22 )]
+material = SubResource( 28 )
+position = Vector2( 672, 288 )
+
+[node name="Enemy8" parent="Encounter_5" instance=ExtResource( 21 )]
+material = SubResource( 29 )
+position = Vector2( 224, 160 )
+
+[node name="Enemy9" parent="Encounter_5" instance=ExtResource( 21 )]
+material = SubResource( 30 )
+position = Vector2( 544, 160 )
+
+[node name="Enemy10" parent="Encounter_5" instance=ExtResource( 21 )]
+material = SubResource( 31 )
+position = Vector2( 416, 96 )
+
+[node name="Barrel8" parent="Encounter_5" instance=ExtResource( 22 )]
+material = SubResource( 32 )
+position = Vector2( 96, 288 )
+
+[node name="Barrel9" parent="Encounter_5" instance=ExtResource( 22 )]
+material = SubResource( 33 )
+position = Vector2( 224, 96 )
+
+[node name="Door5" parent="Encounter_5" instance=ExtResource( 19 )]
+modulate = Color( 1, 0.737255, 0, 1 )
+show_behind_parent = true
+material = SubResource( 34 )
+position = Vector2( 736, -32 )
+texture = ExtResource( 11 )
+
+[node name="Player" type="Sprite" parent="." groups=["Entity", "Player"]]
+unique_name_in_owner = true
 self_modulate = Color( 0.203922, 0.623529, 0.27451, 1 )
 material = ExtResource( 15 )
-position = Vector2( 96, 96 )
+position = Vector2( 96, 160 )
 texture = ExtResource( 8 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 64, 64 )
 script = ExtResource( 5 )
 colours_resource = ExtResource( 10 )
 
-[node name="Tentacle" type="Sprite" parent="Encounter/Player"]
+[node name="TentacleReticle" type="Sprite" parent="Player"]
+modulate = Color( 0.745098, 0, 1, 1 )
+material = SubResource( 38 )
+rotation = 0.780469
+scale = Vector2( 0.5, 0.5 )
+texture = SubResource( 36 )
+
+[node name="Tentacle" type="Sprite" parent="Player"]
 unique_name_in_owner = true
 modulate = Color( 0.482353, 0.0705882, 0.729412, 1 )
 show_behind_parent = true
@@ -144,12 +585,36 @@ texture = ExtResource( 14 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 64, 64 )
 
-[node name="Enemy" type="Sprite" parent="Encounter" groups=["Enemy", "Entity"]]
-material = ExtResource( 15 )
+[node name="StepPlayer" type="AudioStreamPlayer" parent="Player"]
+stream = ExtResource( 7 )
+volume_db = -21.638
+pitch_scale = 1.51
+
+[node name="ImpactPlayer" type="AudioStreamPlayer" parent="Player"]
+stream = ExtResource( 9 )
+
+[node name="TentaclePlayer" type="AudioStreamPlayer" parent="Player"]
+stream = ExtResource( 18 )
+
+[node name="DeathPlayer" type="AudioStreamPlayer" parent="Player"]
+stream = ExtResource( 23 )
+volume_db = -9.348
+pitch_scale = 1.23
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 384, 224 )
+current = true
+
+[node name="TextNodes" type="Node2D" parent="."]
+
+[node name="1" type="Node2D" parent="TextNodes"]
 position = Vector2( 224, 160 )
-texture = ExtResource( 9 )
-offset = Vector2( -0.000244141, 0 )
-region_enabled = true
-region_rect = Rect2( 0, 0, 64, 64 )
-script = ExtResource( 7 )
-colours_resource = ExtResource( 10 )
+script = ExtResource( 20 )
+
+[node name="Label" type="Label" parent="TextNodes/1"]
+margin_left = -128.0
+margin_top = -160.0
+margin_right = 496.0
+margin_bottom = -136.0
+theme = ExtResource( 6 )
+text = "You wake up alone in a cold, cramped, crumbling cell"

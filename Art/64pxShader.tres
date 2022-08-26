@@ -10,4 +10,5 @@ void fragment(){
 }"
 
 [resource]
+resource_local_to_scene = true
 shader = SubResource( 4 )

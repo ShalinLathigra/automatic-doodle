@@ -30,6 +30,11 @@ _global_script_classes=[ {
 "path": "res://Scripts/Entity.gd"
 }, {
 "base": "Entity",
+"class": "ObjectEntity",
+"language": "GDScript",
+"path": "res://Scripts/ObjectEntity.gd"
+}, {
+"base": "Entity",
 "class": "Player",
 "language": "GDScript",
 "path": "res://Scripts/Player.gd"
@@ -39,6 +44,7 @@ _global_script_class_icons={
 "Encounter": "",
 "Enemy": "",
 "Entity": "",
+"ObjectEntity": "",
 "Player": ""
 }
 

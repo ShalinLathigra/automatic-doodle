@@ -1,23 +1,30 @@
 extends Node
 
 var encounter : Encounter
+var map : TileMap
 const TILE_SIZE = 64
 const GRID_OFFSET = Vector2(TILE_SIZE/2, TILE_SIZE/2)
 
+func set_map(m : TileMap):
+	map = m
+	
 func set_encounter(new_encounter : Encounter):
 	encounter = new_encounter
 
+func clear_encounter():
+	encounter = null
+	
 # world to grid coordinates
 func world_to_grid(world_point : Vector2) -> Vector2:
-	return encounter.map.world_to_map(world_point)
+	return map.world_to_map(world_point)
 	
 # convert a grid point to a world coord
 func grid_to_world(grid_point : Vector2) -> Vector2:
-	return encounter.map.map_to_world(grid_point) + GRID_OFFSET
+	return map.map_to_world(grid_point) + GRID_OFFSET
 
 # returns a world point snapped to the nearest grid point
 func snap_to_grid(world_point: Vector2) -> Vector2:
-	return encounter.map.map_to_world(encounter.map.world_to_map(world_point)) + GRID_OFFSET
+	return map.map_to_world(map.world_to_map(world_point)) + GRID_OFFSET
 	
 # Check encounter for entities
 func check_space_for_entities(_grid_origin : Vector2, _search_vector : Vector2, player_blocking : bool):
@@ -50,7 +57,7 @@ func path_obstructed(_grid_origin : Vector2, _move_vector : Vector2):
 	var last_good_cell = _grid_origin
 	for i in range(1, cells_to_check + 1, 1):
 		var cell = _grid_origin + dir * i
-		if encounter.map.get_cell(cell.x, cell.y ) > TileMap.INVALID_CELL:
+		if map.get_cell(cell.x, cell.y ) > TileMap.INVALID_CELL:
 			return last_good_cell
 		last_good_cell = cell
 	return false
