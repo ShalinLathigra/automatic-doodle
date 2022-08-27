@@ -87,3 +87,5 @@ func lose():
 		print("player dead")
 		player.die()
 		lost = true
+		yield(get_tree().create_timer(1.5), "timeout")
+		get_tree().change_scene("res://Scenes/Game Over.tscn")

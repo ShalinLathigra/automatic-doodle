@@ -1,0 +1,58 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Themes/TextTheme.tres" type="Theme" id=1]
+[ext_resource path="res://Scenes/Game Over.gd" type="Script" id=2]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 64.0
+margin_top = 32.0
+margin_right = 704.0
+margin_bottom = 83.0
+theme = ExtResource( 1 )
+text = "Too bad, you and your passenger were taken captive once more. "
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 64.0
+margin_top = 320.0
+margin_right = 704.0
+margin_bottom = 425.0
+theme = ExtResource( 1 )
+text = "Better luck next time!
+
+Left for credits
+Press space to restart"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Stats" type="Label" parent="."]
+margin_left = 224.0
+margin_top = 160.0
+margin_right = 544.0
+margin_bottom = 288.0
+theme = ExtResource( 1 )
+valign = 1
+autowrap = true
+
+[node name="Credits" type="Label" parent="."]
+margin_left = -25.0
+margin_top = 133.0
+margin_right = 791.0
+margin_bottom = 292.0
+theme = ExtResource( 1 )
+text = "https://kenney.nl/assets/rpg-audio
+https://freesound.org/people/InspectorJ/sounds/394419/
+https://freesound.org/people/Rock%20Savage/sounds/81042/
+https://freesound.org/people/Breviceps/sounds/445109/
+https://freesound.org/people/Reitanna/sounds/252265/
+https://freesound.org/people/InspectorJ/sounds/352208/"
+align = 1
+valign = 1

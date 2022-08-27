@@ -56,6 +56,7 @@ config/icon="res://icon.png"
 [autoload]
 
 Pathfinder="*res://Scripts/Pathfinder.gd"
+Stats="*res://Scripts/Stats.gd"
 
 [display]
 

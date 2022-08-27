@@ -39,6 +39,7 @@ func advance():
 		print("dead!") 
 		change_state(-2)
 		texture = colours.get_random_death_image()
+		$CrashPlayer.play()
 		show_behind_parent = true
 		is_blocking = false
 	

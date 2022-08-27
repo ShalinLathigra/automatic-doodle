@@ -9,7 +9,7 @@
 [ext_resource path="res://Sounds/394419__inspectorj__bamboo-swing-a13.wav" type="AudioStream" id=7]
 [ext_resource path="res://Art/Player/walk.png" type="Texture" id=8]
 [ext_resource path="res://Sounds/252265__reitanna__thunk.wav" type="AudioStream" id=9]
-[ext_resource path="res://Art/Object/Colours.tres" type="Resource" id=10]
+[ext_resource path="res://Art/Colours.tres" type="Resource" id=10]
 [ext_resource path="res://Art/Map/doorway.png" type="Texture" id=11]
 [ext_resource path="res://Art/Map/wooden-door.png" type="Texture" id=12]
 [ext_resource path="res://Art/Map/brick-wall.png" type="Texture" id=13]
@@ -274,6 +274,7 @@ tile_data = PoolIntArray( 0, 2, 0, 1, 3, 0, 12, 536870914, 0, 14, 536870914, 0, 
 script = ExtResource( 17 )
 
 [node name="MouseIcon" type="Sprite" parent="."]
+visible = false
 material = SubResource( 2 )
 position = Vector2( 32, 32 )
 z_index = 4096
@@ -302,6 +303,7 @@ position = Vector2( 320, -160 )
 
 [node name="Enemy" parent="Encounter_1" instance=ExtResource( 21 )]
 material = SubResource( 5 )
+lines = "I sure hope I don't get slammed into a wall!"
 
 [node name="CameraAnchor" type="Node2D" parent="Encounter_1"]
 position = Vector2( 384, 224 )
@@ -321,10 +323,10 @@ position = Vector2( 736, 224 )
 
 [node name="W" type="Label" parent="Encounter_1"]
 modulate = Color( 1, 1, 1, 0.552941 )
-margin_left = 160.0
-margin_top = 64.0
-margin_right = 196.0
-margin_bottom = 88.0
+margin_left = 463.0
+margin_top = 96.0
+margin_right = 499.0
+margin_bottom = 120.0
 theme = ExtResource( 6 )
 text = "W"
 
@@ -338,10 +340,10 @@ text = "^"
 
 [node name="A" type="Label" parent="Encounter_1"]
 modulate = Color( 1, 1, 1, 0.552941 )
-margin_left = 113.0
-margin_top = 96.0
-margin_right = 149.0
-margin_bottom = 120.0
+margin_left = 416.0
+margin_top = 128.0
+margin_right = 452.0
+margin_bottom = 152.0
 theme = ExtResource( 6 )
 text = "A"
 
@@ -355,10 +357,10 @@ text = "<"
 
 [node name="S" type="Label" parent="Encounter_1"]
 modulate = Color( 1, 1, 1, 0.552941 )
-margin_left = 162.0
-margin_top = 123.0
-margin_right = 198.0
-margin_bottom = 174.0
+margin_left = 465.0
+margin_top = 155.0
+margin_right = 501.0
+margin_bottom = 206.0
 theme = ExtResource( 6 )
 text = "S
 "
@@ -373,10 +375,10 @@ text = "v"
 
 [node name="D" type="Label" parent="Encounter_1"]
 modulate = Color( 1, 1, 1, 0.552941 )
-margin_left = 204.0
-margin_top = 98.0
-margin_right = 240.0
-margin_bottom = 149.0
+margin_left = 507.0
+margin_top = 130.0
+margin_right = 543.0
+margin_bottom = 181.0
 theme = ExtResource( 6 )
 text = "D
 "
@@ -562,7 +564,7 @@ texture = ExtResource( 11 )
 unique_name_in_owner = true
 self_modulate = Color( 0.203922, 0.623529, 0.27451, 1 )
 material = ExtResource( 15 )
-position = Vector2( 96, 160 )
+position = Vector2( 160, 96 )
 texture = ExtResource( 8 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 64, 64 )
@@ -607,14 +609,172 @@ current = true
 
 [node name="TextNodes" type="Node2D" parent="."]
 
-[node name="1" type="Node2D" parent="TextNodes"]
-position = Vector2( 224, 160 )
-script = ExtResource( 20 )
+[node name="Labels" type="Control" parent="TextNodes"]
+margin_right = 40.0
+margin_bottom = 40.0
 
-[node name="Label" type="Label" parent="TextNodes/1"]
-margin_left = -128.0
-margin_top = -160.0
-margin_right = 496.0
-margin_bottom = -136.0
+[node name="Intro" type="Label" parent="TextNodes/Labels"]
+margin_left = 63.0
+margin_top = -1.0
+margin_right = 713.0
+margin_bottom = 61.0
 theme = ExtResource( 6 )
 text = "You wake up alone in a cold, cramped, crumbling cell"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Door" type="Label" parent="TextNodes/Labels"]
+margin_left = 63.0
+margin_top = -1.0
+margin_right = 713.0
+margin_bottom = 61.0
+theme = ExtResource( 6 )
+text = "That door looks half rotten"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Forboding" type="Label" parent="TextNodes/Labels"]
+margin_left = 63.0
+margin_top = -1.0
+margin_right = 713.0
+margin_bottom = 61.0
+theme = ExtResource( 6 )
+text = "You feel... movement deep in your belly"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Forboding2" type="Label" parent="TextNodes/Labels"]
+margin_left = 63.0
+margin_top = -1.0
+margin_right = 713.0
+margin_bottom = 61.0
+theme = ExtResource( 6 )
+text = "You feel... movement deep in your belly"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Forboding3" type="Label" parent="TextNodes/Labels"]
+margin_left = 63.0
+margin_top = -1.0
+margin_right = 713.0
+margin_bottom = 61.0
+theme = ExtResource( 6 )
+text = "You feel... movement deep in your belly"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Tentacle" type="Label" parent="TextNodes/Labels"]
+modulate = Color( 0.67451, 0.0666667, 0.811765, 1 )
+margin_left = 64.0
+margin_top = 64.0
+margin_right = 714.0
+margin_bottom = 126.0
+theme = ExtResource( 6 )
+text = "Something wants OUT
+^v<>"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Tentacle2" type="Label" parent="TextNodes/Labels"]
+modulate = Color( 0.67451, 0.0666667, 0.811765, 1 )
+margin_left = 64.0
+margin_top = 64.0
+margin_right = 714.0
+margin_bottom = 126.0
+theme = ExtResource( 6 )
+text = "Something wants OUT
+^v<>"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Tentacle3" type="Label" parent="TextNodes/Labels"]
+modulate = Color( 0.67451, 0.0666667, 0.811765, 1 )
+margin_left = 64.0
+margin_top = 64.0
+margin_right = 714.0
+margin_bottom = 126.0
+theme = ExtResource( 6 )
+text = "Something wants OUT
+^v<>"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Gross" type="Label" parent="TextNodes/Labels"]
+margin_left = 64.0
+margin_top = 96.0
+margin_right = 714.0
+margin_bottom = 158.0
+theme = ExtResource( 6 )
+text = "The smell of rot assaults your nostrils"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Gross2" type="Label" parent="TextNodes/Labels"]
+margin_left = 64.0
+margin_top = 160.0
+margin_right = 714.0
+margin_bottom = 222.0
+theme = ExtResource( 6 )
+text = "You better escape before you are turned into a replacement door"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Intro" type="Node2D" parent="TextNodes"]
+position = Vector2( 160, 96 )
+script = ExtResource( 20 )
+target_label_path = NodePath("../Labels/Intro")
+
+[node name="Door" type="Node2D" parent="TextNodes"]
+position = Vector2( 160, 224 )
+script = ExtResource( 20 )
+target_label_path = NodePath("../Labels/Door")
+
+[node name="Forboding3" type="Node2D" parent="TextNodes"]
+position = Vector2( 96, 96 )
+script = ExtResource( 20 )
+target_label_path = NodePath("../Labels/Forboding3")
+
+[node name="Forboding" type="Node2D" parent="TextNodes"]
+position = Vector2( 224, 96 )
+script = ExtResource( 20 )
+target_label_path = NodePath("../Labels/Forboding")
+
+[node name="Forboding2" type="Node2D" parent="TextNodes"]
+position = Vector2( 160, 160 )
+script = ExtResource( 20 )
+target_label_path = NodePath("../Labels/Forboding2")
+
+[node name="Tentacle" type="Node2D" parent="TextNodes"]
+position = Vector2( 96, 160 )
+script = ExtResource( 20 )
+target_label_path = NodePath("../Labels/Tentacle")
+
+[node name="Tentacle2" type="Node2D" parent="TextNodes"]
+position = Vector2( 160, 224 )
+script = ExtResource( 20 )
+target_label_path = NodePath("../Labels/Tentacle2")
+
+[node name="Tentacle3" type="Node2D" parent="TextNodes"]
+position = Vector2( 224, 160 )
+script = ExtResource( 20 )
+target_label_path = NodePath("../Labels/Tentacle3")
+
+[node name="Gross" type="Node2D" parent="TextNodes"]
+position = Vector2( 160, 288 )
+script = ExtResource( 20 )
+target_label_path = NodePath("../Labels/Gross")
+
+[node name="Gross2" type="Node2D" parent="TextNodes"]
+position = Vector2( 224, 352 )
+script = ExtResource( 20 )
+target_label_path = NodePath("../Labels/Gross2")

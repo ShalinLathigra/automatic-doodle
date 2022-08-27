@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Art/Enemy/evil-minion.png" type="Texture" id=1]
 [ext_resource path="res://Art/64pxShader.tres" type="Material" id=2]
-[ext_resource path="res://Art/Object/Colours.tres" type="Resource" id=3]
+[ext_resource path="res://Art/Colours.tres" type="Resource" id=3]
 [ext_resource path="res://Scripts/Enemy.gd" type="Script" id=4]
 [ext_resource path="res://Sounds/Death1.wav" type="AudioStream" id=5]
 [ext_resource path="res://Sounds/445109__breviceps__mud-splat.wav" type="AudioStream" id=6]
@@ -76,4 +76,5 @@ margin_bottom = -18.0
 theme = ExtResource( 7 )
 align = 1
 valign = 1
+autowrap = true
 script = ExtResource( 8 )

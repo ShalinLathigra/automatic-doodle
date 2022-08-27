@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/352208__inspectorj__smashing-wooden-fence-c.wav-16564cbdb589b6a310ca4f70396e2a1f.sample"
+
+[deps]
+
+source_file="res://Sounds/352208__inspectorj__smashing-wooden-fence-c.wav"
+dest_files=[ "res://.import/352208__inspectorj__smashing-wooden-fence-c.wav-16564cbdb589b6a310ca4f70396e2a1f.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

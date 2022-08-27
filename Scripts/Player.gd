@@ -11,6 +11,7 @@ func _ready():
 
 func _process(_delta):
 	var new_dir = Vector2()
+	var new_shove_dir = Vector2()
 	var skip = false
 	
 	# Move inputs
@@ -23,15 +24,16 @@ func _process(_delta):
 		skip=true
 		
 	# Shove inputs
-	if Input.is_action_pressed("shove_up"):		shove_dir=Vector2.UP
-	if Input.is_action_pressed("shove_down"):	shove_dir=Vector2.DOWN
-	if Input.is_action_pressed("shove_left"):	shove_dir=Vector2.LEFT
-	if Input.is_action_pressed("shove_right"):	shove_dir=Vector2.RIGHT
+	if Input.is_action_pressed("shove_up") or Input.is_action_pressed("ui_up"):		new_shove_dir=Vector2.UP
+	if Input.is_action_pressed("shove_down") or Input.is_action_pressed("ui_down"):	new_shove_dir=Vector2.DOWN
+	if Input.is_action_pressed("shove_left") or Input.is_action_pressed("ui_left"):	new_shove_dir=Vector2.LEFT
+	if Input.is_action_pressed("shove_right") or Input.is_action_pressed("ui_right"):	new_shove_dir=Vector2.RIGHT
 	
-	var new_pos = lerp($TentacleReticle.position, shove_dir * Pathfinder.TILE_SIZE * 0.5, 0.5)
-	$TentacleReticle.position = new_pos
-	$TentacleReticle.modulate.a = new_pos.length() 
+	$TentacleReticle.modulate.a = new_shove_dir.length() 
+	print(new_shove_dir * Pathfinder.TILE_SIZE * 0.5)
+	$TentacleReticle.position = lerp($TentacleReticle.position, new_shove_dir * Pathfinder.TILE_SIZE * 0.5, 0.5)
 	if not moving and (new_dir != move_vector or skip):
+		shove_dir = new_shove_dir
 		move_vector = new_dir
 		emit_signal("chosen_direction")
 
@@ -41,8 +43,7 @@ func die():
 	
 func advance():
 	if state != 0: return
-	print("\n------------------------------------------")
-	print("PLAYER: ", grid_position)
+	Stats.moves += 1
 	# freeze up inputs for now
 	moving = true
 	last_position = grid_position
@@ -75,7 +76,6 @@ func advance():
 	shove_dir = Vector2.ZERO
 	$"%Tentacle".texture = colours.get_random_tentacle_image()
 	yield (timer, "timeout")
-	print("\t Player End position: ", grid_position)
 
 func _animate_move_and_shove() -> SceneTreeTween:
 	# In parallel
