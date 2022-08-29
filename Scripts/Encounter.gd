@@ -44,9 +44,7 @@ func start_encounter():
 	player.startup()
 	for entity in entities:
 		entity.startup()
-		print(entity.grid_position)
 	encounter_started = true
-	print("Starting Encounter: ", name, player.grid_position)
 	
 func exit_encounter():
 	encounter_started = false
@@ -84,7 +82,6 @@ func receive_dir_player(isBody: bool):
 
 func lose():
 	if not lost:
-		print("player dead")
 		player.die()
 		lost = true
 		yield(get_tree().create_timer(1.5), "timeout")

@@ -30,7 +30,6 @@ func _process(_delta):
 	if Input.is_action_pressed("shove_right") or Input.is_action_pressed("ui_right"):	new_shove_dir=Vector2.RIGHT
 	
 	$TentacleReticle.modulate.a = new_shove_dir.length() 
-	print(new_shove_dir * Pathfinder.TILE_SIZE * 0.5)
 	$TentacleReticle.position = lerp($TentacleReticle.position, new_shove_dir * Pathfinder.TILE_SIZE * 0.5, 0.5)
 	if not moving and (new_dir != move_vector or skip):
 		shove_dir = new_shove_dir

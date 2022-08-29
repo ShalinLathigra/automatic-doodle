@@ -1,10 +1,9 @@
 extends Node2D
 
-
 export(NodePath) var _entry_path
 
 onready var camera : Node2D = get_node("Camera2D")
-var next_scene = "res://Scenes/Game Over.tscn"
+var next_scene = "res://Scenes/Success.tscn"
 var encounter : Encounter
 
 var encounters = []

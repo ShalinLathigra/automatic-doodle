@@ -24,7 +24,6 @@ func _ready():
 	is_blocking = true
 	
 func startup():
-	print(name, position)
 	grid_position = Pathfinder.world_to_grid(global_position)
 	return self
 

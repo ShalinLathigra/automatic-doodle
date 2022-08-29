@@ -43,12 +43,13 @@ valign = 1
 autowrap = true
 
 [node name="Credits" type="Label" parent="."]
-margin_left = -25.0
-margin_top = 133.0
-margin_right = 791.0
-margin_bottom = 292.0
+margin_left = -5.0
+margin_top = 105.0
+margin_right = 811.0
+margin_bottom = 291.0
 theme = ExtResource( 1 )
-text = "https://kenney.nl/assets/rpg-audio
+text = "All Art from: https://game-icons.net/
+https://kenney.nl/assets/rpg-audio
 https://freesound.org/people/InspectorJ/sounds/394419/
 https://freesound.org/people/Rock%20Savage/sounds/81042/
 https://freesound.org/people/Breviceps/sounds/445109/
